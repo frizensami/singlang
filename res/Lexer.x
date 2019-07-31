@@ -7,13 +7,18 @@ module Lexer (main) where
 $digit = 0-9			-- digits
 $alpha = [a-zA-Z]		-- alphabetic characters
 
-tokens :- 
-    
+tokens :-  
   $white+				;
   "--".*				;
-  let					{ \s -> Let }
-  in					{ \s -> In }
+  chope					{ \s -> Chope }
+  "confirm plus chop" { \s -> Const }
+  "meh?"        { \s -> If }
+  "ok den"      { \s -> Then }
+  "alamak den"  { \s -> Else }
+  "wait long long," { \s -> While }
+  paiseh        { \s -> Throw }
   $digit+				{ \s -> Int (read s) }
+  \"[^"\\]|\\.*\" { \s -> Lit s }
   [\=\+\-\*\/\(\)]			{ \s -> Sym (head s) }
   $alpha [$alpha $digit \_ \']*		{ \s -> Var s }
 
@@ -22,12 +27,18 @@ tokens :-
 
 -- The token type:
 data Token =
-	Let 		|
-	In  		|
-	Sym Char	|
-	Var String	|
-	Int Int
-	deriving (Eq,Show)
+  Chope     |
+  Const     |
+  If        |
+  Then      |
+  Else      |
+  While     |
+  Throw     |
+  Lit String |
+  Sym Char  |
+  Var String  |
+  Int Int
+  deriving (Eq,Show)
 
 main = do
   s <- getContents

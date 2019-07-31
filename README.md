@@ -7,7 +7,7 @@ Ah boy ah, you think limpeh cannot code isit?
 **Singlang**
 
 ```
-confirm plus chop x = 5
+doubleconfirm x = 5
 chope y = 1
 
 x = 5 meh?
@@ -46,3 +46,4 @@ while x != 5
 | const   | confirm plus chop | - |
 | return  | dabao    | - |
 | throw   | paiseh   | - |
+| while | wait long long | - |
