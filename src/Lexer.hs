@@ -2,7 +2,7 @@
 {-# LANGUAGE CPP #-}
 {-# LINE 1 "res/Lexer.x" #-}
 
-module Lexer (main, scanTokens) where
+module Lexer (main, scanTokens, Token (..)) where
 
 #if __GLASGOW_HASKELL__ >= 603
 #include "ghcconfig.h"
@@ -10461,7 +10461,7 @@ alex_actions = array (0 :: Int, 42)
 
 -- The token type:
 data Token =
-  TChope     |
+  TLet     |
   TConst     |
   TIf        |
   TThen      |
@@ -10480,7 +10480,7 @@ main = do
   s <- getContents
   print (alexScanTokens s)
 
-alex_action_2 =  \s -> TChope 
+alex_action_2 =  \s -> TLet 
 alex_action_3 =  \s -> TConst 
 alex_action_4 =  \s -> TIf 
 alex_action_5 =  \s -> TThen 
