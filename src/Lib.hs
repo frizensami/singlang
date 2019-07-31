@@ -2,10 +2,7 @@ module Lib
     ( someFunc
     ) where
 
-import Text.Parsec.String (Parser)
-import Text.Parsec.Language (emptyDef)
-import qualified Text.Parsec.Token as Tok
-
+import qualified Lexer
 
 someFunc :: IO ()
-someFunc = putStrLn "EXECUTED"
+someFunc = Lexer.main
