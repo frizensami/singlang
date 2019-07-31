@@ -1,1 +1,1 @@
-./run_alex.sh && ./run_happy.sh  && stack build && stack exec singlang-exe < test-full.in
+./run_alex.sh && ./run_happy.sh  && stack build && stack exec singlang-exe < test-full.lah
