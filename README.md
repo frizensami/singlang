@@ -7,7 +7,7 @@ Ah boy ah, you think limpeh cannot code isit?
 **Singlang**
 
 ```
-doubleconfirm x = 5
+confirm plus chop x = 5
 chope y = 1
 
 x = 5 meh?
