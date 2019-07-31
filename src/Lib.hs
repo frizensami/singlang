@@ -3,8 +3,12 @@ module Lib
     ) where
 
 import qualified Lexer
+import qualified Parser
 
 interpret :: IO ()
 interpret = do
     code <- getContents
-    print (Lexer.scanTokens code)
+    let 
+        tokens = Lexer.scanTokens code
+        parseTree = Parser.parseTokens tokens
+    print parseTree

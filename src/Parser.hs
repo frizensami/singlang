@@ -8,113 +8,143 @@ import Control.Monad (ap)
 
 -- parser produced by Happy Version 1.19.11
 
-data HappyAbsSyn t4
+data HappyAbsSyn t4 t5
 	= HappyTerminal (Token)
 	| HappyErrorToken Int
 	| HappyAbsSyn4 t4
+	| HappyAbsSyn5 t5
 
 happyExpList :: Happy_Data_Array.Array Int Int
-happyExpList = Happy_Data_Array.listArray (0,18) ([13328,8,1024,0,0,0,0,4112,52,0,0
+happyExpList = Happy_Data_Array.listArray (0,24) ([26656,26656,0,8192,0,0,0,26656,0,4096,26656,0,0
 	])
 
 {-# NOINLINE happyExpListPerState #-}
 happyExpListPerState st =
     token_strs_expected
-  where token_strs = ["error","%dummy","%start_parseTokens","Exp","let","const","if","then","while","throw","str","sym","var","int","%eof"]
-        bit_start = st * 15
-        bit_end = (st + 1) * 15
+  where token_strs = ["error","%dummy","%start_parseTokens","Exps","Exp","let","const","if","then","while","throw","str","sym","var","int","%eof"]
+        bit_start = st * 16
+        bit_end = (st + 1) * 16
         read_bit = readArrayBit happyExpList
         bits = map read_bit [bit_start..bit_end - 1]
-        bits_indexed = zip bits [0..14]
+        bits_indexed = zip bits [0..15]
         token_strs_expected = concatMap f bits_indexed
         f (False, _) = []
         f (True, nr) = [token_strs !! nr]
 
-action_0 (5) = happyShift action_2
-action_0 (11) = happyShift action_4
-action_0 (13) = happyShift action_5
-action_0 (14) = happyShift action_6
-action_0 (4) = happyGoto action_3
+action_0 (6) = happyShift action_3
+action_0 (12) = happyShift action_4
+action_0 (14) = happyShift action_5
+action_0 (15) = happyShift action_6
+action_0 (4) = happyGoto action_7
+action_0 (5) = happyGoto action_2
 action_0 _ = happyFail (happyExpListPerState 0)
 
-action_1 (5) = happyShift action_2
+action_1 (6) = happyShift action_3
+action_1 (12) = happyShift action_4
+action_1 (14) = happyShift action_5
+action_1 (15) = happyShift action_6
+action_1 (5) = happyGoto action_2
 action_1 _ = happyFail (happyExpListPerState 1)
 
-action_2 (13) = happyShift action_7
-action_2 _ = happyFail (happyExpListPerState 2)
+action_2 _ = happyReduce_1
 
-action_3 (15) = happyAccept
+action_3 (14) = happyShift action_9
 action_3 _ = happyFail (happyExpListPerState 3)
 
-action_4 _ = happyReduce_3
+action_4 _ = happyReduce_5
 
-action_5 _ = happyReduce_4
+action_5 _ = happyReduce_6
 
-action_6 _ = happyReduce_2
+action_6 _ = happyReduce_4
 
-action_7 (12) = happyShift action_8
+action_7 (6) = happyShift action_3
+action_7 (12) = happyShift action_4
+action_7 (14) = happyShift action_5
+action_7 (15) = happyShift action_6
+action_7 (16) = happyAccept
+action_7 (5) = happyGoto action_8
 action_7 _ = happyFail (happyExpListPerState 7)
 
-action_8 (5) = happyShift action_2
-action_8 (11) = happyShift action_4
-action_8 (13) = happyShift action_5
-action_8 (14) = happyShift action_6
-action_8 (4) = happyGoto action_9
-action_8 _ = happyFail (happyExpListPerState 8)
+action_8 _ = happyReduce_2
 
-action_9 _ = happyReduce_1
+action_9 (13) = happyShift action_10
+action_9 _ = happyFail (happyExpListPerState 9)
 
-happyReduce_1 = happyReduce 4 4 happyReduction_1
-happyReduction_1 ((HappyAbsSyn4  happy_var_4) `HappyStk`
+action_10 (6) = happyShift action_3
+action_10 (12) = happyShift action_4
+action_10 (14) = happyShift action_5
+action_10 (15) = happyShift action_6
+action_10 (5) = happyGoto action_11
+action_10 _ = happyFail (happyExpListPerState 10)
+
+action_11 _ = happyReduce_3
+
+happyReduce_1 = happySpecReduce_1  4 happyReduction_1
+happyReduction_1 (HappyAbsSyn5  happy_var_1)
+	 =  HappyAbsSyn4
+		 ([happy_var_1]
+	)
+happyReduction_1 _  = notHappyAtAll 
+
+happyReduce_2 = happySpecReduce_2  4 happyReduction_2
+happyReduction_2 (HappyAbsSyn5  happy_var_2)
+	(HappyAbsSyn4  happy_var_1)
+	 =  HappyAbsSyn4
+		 (happy_var_2 : happy_var_1
+	)
+happyReduction_2 _ _  = notHappyAtAll 
+
+happyReduce_3 = happyReduce 4 5 happyReduction_3
+happyReduction_3 ((HappyAbsSyn5  happy_var_4) `HappyStk`
 	_ `HappyStk`
 	(HappyTerminal (TVar happy_var_2)) `HappyStk`
 	_ `HappyStk`
 	happyRest)
-	 = HappyAbsSyn4
+	 = HappyAbsSyn5
 		 (Let happy_var_2 happy_var_4
 	) `HappyStk` happyRest
 
-happyReduce_2 = happySpecReduce_1  4 happyReduction_2
-happyReduction_2 (HappyTerminal (TInt happy_var_1))
-	 =  HappyAbsSyn4
+happyReduce_4 = happySpecReduce_1  5 happyReduction_4
+happyReduction_4 (HappyTerminal (TInt happy_var_1))
+	 =  HappyAbsSyn5
 		 (Int happy_var_1
-	)
-happyReduction_2 _  = notHappyAtAll 
-
-happyReduce_3 = happySpecReduce_1  4 happyReduction_3
-happyReduction_3 (HappyTerminal (TLit happy_var_1))
-	 =  HappyAbsSyn4
-		 (Str happy_var_1
-	)
-happyReduction_3 _  = notHappyAtAll 
-
-happyReduce_4 = happySpecReduce_1  4 happyReduction_4
-happyReduction_4 (HappyTerminal (TVar happy_var_1))
-	 =  HappyAbsSyn4
-		 (Var happy_var_1
 	)
 happyReduction_4 _  = notHappyAtAll 
 
+happyReduce_5 = happySpecReduce_1  5 happyReduction_5
+happyReduction_5 (HappyTerminal (TLit happy_var_1))
+	 =  HappyAbsSyn5
+		 (Str happy_var_1
+	)
+happyReduction_5 _  = notHappyAtAll 
+
+happyReduce_6 = happySpecReduce_1  5 happyReduction_6
+happyReduction_6 (HappyTerminal (TVar happy_var_1))
+	 =  HappyAbsSyn5
+		 (Var happy_var_1
+	)
+happyReduction_6 _  = notHappyAtAll 
+
 happyNewToken action sts stk [] =
-	action 15 15 notHappyAtAll (HappyState action) sts stk []
+	action 16 16 notHappyAtAll (HappyState action) sts stk []
 
 happyNewToken action sts stk (tk:tks) =
 	let cont i = action i i tk (HappyState action) sts stk tks in
 	case tk of {
-	TLet -> cont 5;
-	TConst -> cont 6;
-	TIf -> cont 7;
-	TThen -> cont 8;
-	TWhile -> cont 9;
-	TThrow -> cont 10;
-	TLit happy_dollar_dollar -> cont 11;
-	TSym happy_dollar_dollar -> cont 12;
-	TVar happy_dollar_dollar -> cont 13;
-	TInt happy_dollar_dollar -> cont 14;
+	TLet -> cont 6;
+	TConst -> cont 7;
+	TIf -> cont 8;
+	TThen -> cont 9;
+	TWhile -> cont 10;
+	TThrow -> cont 11;
+	TLit happy_dollar_dollar -> cont 12;
+	TSym happy_dollar_dollar -> cont 13;
+	TVar happy_dollar_dollar -> cont 14;
+	TInt happy_dollar_dollar -> cont 15;
 	_ -> happyError' ((tk:tks), [])
 	}
 
-happyError_ explist 15 tk tks = happyError' (tks, explist)
+happyError_ explist 16 tk tks = happyError' (tks, explist)
 happyError_ explist _ tk tks = happyError' ((tk:tks), explist)
 
 newtype HappyIdentity a = HappyIdentity a
@@ -148,6 +178,8 @@ happySeq = happyDontSeq
 
 parseError :: [Token] -> a
 parseError _ = error "Parse error"
+
+data Exps = Exps [Exp]
 
 data Exp = Let String Exp
          | Int Int

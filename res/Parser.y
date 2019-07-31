@@ -22,6 +22,10 @@ import Lexer
 
 %%
 
+-- Left recursive: list of expressions
+Exps : Exp { [$1] }
+     | Exps Exp { $2 : $1 }
+
 Exp : let var sym Exp { Let $2 $4 } 
     | int { Int $1 }
     | str { Str $1 }
@@ -31,6 +35,8 @@ Exp : let var sym Exp { Let $2 $4 }
 
 parseError :: [Token] -> a
 parseError _ = error "Parse error"
+
+data Exps = Exps [Exp]
 
 data Exp = Let String Exp
          | Int Int
