@@ -10,5 +10,6 @@ interpret = do
     code <- getContents
     let 
         tokens = Lexer.scanTokens code
-        parseTree = Parser.parseTokens tokens
+        -- Need to reverse the parsed tree due to left recursion on expressions
+        parseTree = reverse $ Parser.parseTokens tokens
     print parseTree

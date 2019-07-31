@@ -1,2 +1,2 @@
-chope x = 5
-chope x = 6
+chope x = 5 + 6 / 7
+chope x = 6 + "i am a string"
