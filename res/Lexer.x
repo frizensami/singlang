@@ -19,7 +19,13 @@ tokens :-
   paiseh        { \s -> TThrow }
   $digit+				{ \s -> TInt (read s) }
   \".*\"        { \s -> TLit s }
-  [\=\+\-\*\/\(\)]			{ \s -> TSym (head s) }
+  \=            { \s -> TEq }
+  \+            { \s -> TPlus }
+  \-            { \s -> TMinus }
+  \*            { \s -> TTimes }
+  \/            { \s -> TDiv }
+  \(            { \s -> TLParen }
+  \)            { \s -> TRParen }
   $alpha [$alpha $digit \_ \']*		{ \s -> TVar s }
 
 {
@@ -35,7 +41,13 @@ data Token =
   TWhile     |
   TThrow     |
   TLit String |
-  TSym Char  |
+  TEq |
+  TPlus |
+  TMinus |
+  TTimes |
+  TDiv |
+  TLParen |
+  TRParen |
   TVar String  |
   TInt Int
   deriving (Eq,Show)

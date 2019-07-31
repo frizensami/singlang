@@ -15,10 +15,15 @@ import Lexer
     while { TWhile }
     throw { TThrow }
     str { TLit $$ }
-    sym { TSym $$ }
     var { TVar $$ }
     int { TInt $$ }
-
+    '=' { TEq }
+    '+' { TPlus }
+    '-' { TMinus }
+    '*' { TTimes }
+    '/' { TDiv }
+    '(' { TLParen }
+    ')' { TRParen }
 
 %%
 
@@ -26,7 +31,7 @@ import Lexer
 Exps : Exp { [$1] }
      | Exps Exp { $2 : $1 }
 
-Exp : let var sym Exp { Let $2 $4 } 
+Exp : let var '=' Exp { Let $2 $4 } 
     | int { Int $1 }
     | str { Str $1 }
     | var { Var $1 }

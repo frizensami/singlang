@@ -15,40 +15,40 @@ data HappyAbsSyn t4 t5
 	| HappyAbsSyn5 t5
 
 happyExpList :: Happy_Data_Array.Array Int Int
-happyExpList = Happy_Data_Array.listArray (0,24) ([26656,26656,0,8192,0,0,0,26656,0,4096,26656,0,0
+happyExpList = Happy_Data_Array.listArray (0,31) ([14368,2048,14,0,16384,0,0,0,0,32768,224,0,0,16,898,0,0,0
 	])
 
 {-# NOINLINE happyExpListPerState #-}
 happyExpListPerState st =
     token_strs_expected
-  where token_strs = ["error","%dummy","%start_parseTokens","Exps","Exp","let","const","if","then","while","throw","str","sym","var","int","%eof"]
-        bit_start = st * 16
-        bit_end = (st + 1) * 16
+  where token_strs = ["error","%dummy","%start_parseTokens","Exps","Exp","let","const","if","then","while","throw","str","var","int","'='","'+'","'-'","'*'","'/'","'('","')'","%eof"]
+        bit_start = st * 22
+        bit_end = (st + 1) * 22
         read_bit = readArrayBit happyExpList
         bits = map read_bit [bit_start..bit_end - 1]
-        bits_indexed = zip bits [0..15]
+        bits_indexed = zip bits [0..21]
         token_strs_expected = concatMap f bits_indexed
         f (False, _) = []
         f (True, nr) = [token_strs !! nr]
 
 action_0 (6) = happyShift action_3
 action_0 (12) = happyShift action_4
-action_0 (14) = happyShift action_5
-action_0 (15) = happyShift action_6
+action_0 (13) = happyShift action_5
+action_0 (14) = happyShift action_6
 action_0 (4) = happyGoto action_7
 action_0 (5) = happyGoto action_2
 action_0 _ = happyFail (happyExpListPerState 0)
 
 action_1 (6) = happyShift action_3
 action_1 (12) = happyShift action_4
-action_1 (14) = happyShift action_5
-action_1 (15) = happyShift action_6
+action_1 (13) = happyShift action_5
+action_1 (14) = happyShift action_6
 action_1 (5) = happyGoto action_2
 action_1 _ = happyFail (happyExpListPerState 1)
 
 action_2 _ = happyReduce_1
 
-action_3 (14) = happyShift action_9
+action_3 (13) = happyShift action_9
 action_3 _ = happyFail (happyExpListPerState 3)
 
 action_4 _ = happyReduce_5
@@ -59,21 +59,21 @@ action_6 _ = happyReduce_4
 
 action_7 (6) = happyShift action_3
 action_7 (12) = happyShift action_4
-action_7 (14) = happyShift action_5
-action_7 (15) = happyShift action_6
-action_7 (16) = happyAccept
+action_7 (13) = happyShift action_5
+action_7 (14) = happyShift action_6
+action_7 (22) = happyAccept
 action_7 (5) = happyGoto action_8
 action_7 _ = happyFail (happyExpListPerState 7)
 
 action_8 _ = happyReduce_2
 
-action_9 (13) = happyShift action_10
+action_9 (15) = happyShift action_10
 action_9 _ = happyFail (happyExpListPerState 9)
 
 action_10 (6) = happyShift action_3
 action_10 (12) = happyShift action_4
-action_10 (14) = happyShift action_5
-action_10 (15) = happyShift action_6
+action_10 (13) = happyShift action_5
+action_10 (14) = happyShift action_6
 action_10 (5) = happyGoto action_11
 action_10 _ = happyFail (happyExpListPerState 10)
 
@@ -126,7 +126,7 @@ happyReduction_6 (HappyTerminal (TVar happy_var_1))
 happyReduction_6 _  = notHappyAtAll 
 
 happyNewToken action sts stk [] =
-	action 16 16 notHappyAtAll (HappyState action) sts stk []
+	action 22 22 notHappyAtAll (HappyState action) sts stk []
 
 happyNewToken action sts stk (tk:tks) =
 	let cont i = action i i tk (HappyState action) sts stk tks in
@@ -138,13 +138,19 @@ happyNewToken action sts stk (tk:tks) =
 	TWhile -> cont 10;
 	TThrow -> cont 11;
 	TLit happy_dollar_dollar -> cont 12;
-	TSym happy_dollar_dollar -> cont 13;
-	TVar happy_dollar_dollar -> cont 14;
-	TInt happy_dollar_dollar -> cont 15;
+	TVar happy_dollar_dollar -> cont 13;
+	TInt happy_dollar_dollar -> cont 14;
+	TEq -> cont 15;
+	TPlus -> cont 16;
+	TMinus -> cont 17;
+	TTimes -> cont 18;
+	TDiv -> cont 19;
+	TLParen -> cont 20;
+	TRParen -> cont 21;
 	_ -> happyError' ((tk:tks), [])
 	}
 
-happyError_ explist 16 tk tks = happyError' (tks, explist)
+happyError_ explist 22 tk tks = happyError' (tks, explist)
 happyError_ explist _ tk tks = happyError' ((tk:tks), explist)
 
 newtype HappyIdentity a = HappyIdentity a
