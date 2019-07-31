@@ -1,5 +1,5 @@
 {
-module Lexer (main, scanTokens) where
+module Lexer (main, scanTokens, Token (..)) where
 }
 
 %wrapper "basic"
@@ -10,7 +10,7 @@ $alpha = [a-zA-Z]		-- alphabetic characters
 tokens :-  
   $white+				;
   "--".*				;
-  chope					{ \s -> TChope }
+  chope					{ \s -> TLet }
   "confirm plus chop" { \s -> TConst }
   "meh?"        { \s -> TIf }
   "ok den"      { \s -> TThen }
@@ -27,7 +27,7 @@ tokens :-
 
 -- The token type:
 data Token =
-  TChope     |
+  TLet     |
   TConst     |
   TIf        |
   TThen      |
