@@ -1,5 +1,5 @@
 {
-module Lexer (main) where
+module Lexer (main, scanTokens) where
 }
 
 %wrapper "basic"
@@ -18,7 +18,7 @@ tokens :-
   "wait long long," { \s -> While }
   paiseh        { \s -> Throw }
   $digit+				{ \s -> Int (read s) }
-  \"[^"\\]|\\.*\" { \s -> Lit s }
+  \".*\"        { \s -> Lit s }
   [\=\+\-\*\/\(\)]			{ \s -> Sym (head s) }
   $alpha [$alpha $digit \_ \']*		{ \s -> Var s }
 
@@ -39,6 +39,8 @@ data Token =
   Var String  |
   Int Int
   deriving (Eq,Show)
+
+scanTokens = alexScanTokens
 
 main = do
   s <- getContents

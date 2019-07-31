@@ -2,7 +2,7 @@
 {-# LANGUAGE CPP #-}
 {-# LINE 1 "res/Lexer.x" #-}
 
-module Lexer (main) where
+module Lexer (main, scanTokens) where
 
 #if __GLASGOW_HASKELL__ >= 603
 #include "ghcconfig.h"
@@ -10473,6 +10473,8 @@ data Token =
   Var String  |
   Int Int
   deriving (Eq,Show)
+
+scanTokens = alexScanTokens
 
 main = do
   s <- getContents

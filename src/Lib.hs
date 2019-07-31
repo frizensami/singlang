@@ -1,8 +1,10 @@
 module Lib
-    ( someFunc
+    ( interpret
     ) where
 
 import qualified Lexer
 
-someFunc :: IO ()
-someFunc = Lexer.main
+interpret :: IO ()
+interpret = do
+    code <- getContents
+    print (Lexer.scanTokens code)
