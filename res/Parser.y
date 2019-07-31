@@ -14,6 +14,7 @@ import Lexer
     then { TThen }
     while { TWhile }
     throw { TThrow }
+    print { TPrint }
     str { TLit $$ }
     var { TVar $$ }
     int { TInt $$ }
@@ -43,6 +44,7 @@ Exp : let var '=' Exp       { Let $2 $4 }
     | Exp '/' Exp           { Div $1 $3 }
     | '(' Exp ')'           { $2 }
     | '-' Exp %prec NEG     { Negate $2 }
+    | print Exp             { Print $2 }
     | int                   { Int $1 }
     | str                   { Str $1 }
     | var                   { Var $1 }
@@ -62,6 +64,7 @@ data Exp = Let String Exp
          | Div Exp Exp
          | Negate Exp
          | Brack Exp
+         | Print Exp
          | Int Int
          | Str String
          | Var String

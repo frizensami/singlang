@@ -17,6 +17,7 @@ tokens :-
   "alamak den"  { \s -> TElse }
   "wait long long," { \s -> TWhile }
   paiseh        { \s -> TThrow }
+  simi          { \s -> TPrint }
   $digit+				{ \s -> TInt (read s) }
   \".*\"        { \s -> TLit s }
   \=            { \s -> TEq }
@@ -40,6 +41,7 @@ data Token =
   TElse      |
   TWhile     |
   TThrow     |
+  TPrint     |
   TLit String |
   TEq |
   TPlus |
