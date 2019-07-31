@@ -10,34 +10,34 @@ $alpha = [a-zA-Z]		-- alphabetic characters
 tokens :-  
   $white+				;
   "--".*				;
-  chope					{ \s -> Chope }
-  "confirm plus chop" { \s -> Const }
-  "meh?"        { \s -> If }
-  "ok den"      { \s -> Then }
-  "alamak den"  { \s -> Else }
-  "wait long long," { \s -> While }
-  paiseh        { \s -> Throw }
-  $digit+				{ \s -> Int (read s) }
-  \".*\"        { \s -> Lit s }
-  [\=\+\-\*\/\(\)]			{ \s -> Sym (head s) }
-  $alpha [$alpha $digit \_ \']*		{ \s -> Var s }
+  chope					{ \s -> TChope }
+  "confirm plus chop" { \s -> TConst }
+  "meh?"        { \s -> TIf }
+  "ok den"      { \s -> TThen }
+  "alamak den"  { \s -> TElse }
+  "wait long long," { \s -> TWhile }
+  paiseh        { \s -> TThrow }
+  $digit+				{ \s -> TInt (read s) }
+  \".*\"        { \s -> TLit s }
+  [\=\+\-\*\/\(\)]			{ \s -> TSym (head s) }
+  $alpha [$alpha $digit \_ \']*		{ \s -> TVar s }
 
 {
 -- Each action has type :: String -> Token
 
 -- The token type:
 data Token =
-  Chope     |
-  Const     |
-  If        |
-  Then      |
-  Else      |
-  While     |
-  Throw     |
-  Lit String |
-  Sym Char  |
-  Var String  |
-  Int Int
+  TChope     |
+  TConst     |
+  TIf        |
+  TThen      |
+  TElse      |
+  TWhile     |
+  TThrow     |
+  TLit String |
+  TSym Char  |
+  TVar String  |
+  TInt Int
   deriving (Eq,Show)
 
 scanTokens = alexScanTokens

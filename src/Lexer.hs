@@ -10461,17 +10461,17 @@ alex_actions = array (0 :: Int, 42)
 
 -- The token type:
 data Token =
-  Chope     |
-  Const     |
-  If        |
-  Then      |
-  Else      |
-  While     |
-  Throw     |
-  Lit String |
-  Sym Char  |
-  Var String  |
-  Int Int
+  TChope     |
+  TConst     |
+  TIf        |
+  TThen      |
+  TElse      |
+  TWhile     |
+  TThrow     |
+  TLit String |
+  TSym Char  |
+  TVar String  |
+  TInt Int
   deriving (Eq,Show)
 
 scanTokens = alexScanTokens
@@ -10480,17 +10480,17 @@ main = do
   s <- getContents
   print (alexScanTokens s)
 
-alex_action_2 =  \s -> Chope 
-alex_action_3 =  \s -> Const 
-alex_action_4 =  \s -> If 
-alex_action_5 =  \s -> Then 
-alex_action_6 =  \s -> Else 
-alex_action_7 =  \s -> While 
-alex_action_8 =  \s -> Throw 
-alex_action_9 =  \s -> Int (read s) 
-alex_action_10 =  \s -> Lit s 
-alex_action_11 =  \s -> Sym (head s) 
-alex_action_12 =  \s -> Var s 
+alex_action_2 =  \s -> TChope 
+alex_action_3 =  \s -> TConst 
+alex_action_4 =  \s -> TIf 
+alex_action_5 =  \s -> TThen 
+alex_action_6 =  \s -> TElse 
+alex_action_7 =  \s -> TWhile 
+alex_action_8 =  \s -> TThrow 
+alex_action_9 =  \s -> TInt (read s) 
+alex_action_10 =  \s -> TLit s 
+alex_action_11 =  \s -> TSym (head s) 
+alex_action_12 =  \s -> TVar s 
 {-# LINE 1 "templates/GenericTemplate.hs" #-}
 -- -----------------------------------------------------------------------------
 -- ALEX TEMPLATE
