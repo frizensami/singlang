@@ -13,10 +13,17 @@ simi "Hello!"
 simi (-3 + 2)
 simi ((2 * 2) * 3)
 
-x = 3 meh?
+chope t = 17
+t = 17 meh?
     ok den 
-        chope a = 1
+        chope t = 1
         chope b = 2
     alamak den 
-        chope a = 77
+        chope t = 77
         chope b = 101
+ok can liao
+
+chope i = 0
+wait long long, i = 5 meh?
+   chope i = i + 1
+ok can liao

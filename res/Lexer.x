@@ -16,6 +16,7 @@ tokens :-
   "ok den"      { \s -> TThen }
   "alamak den"  { \s -> TElse }
   "wait long long," { \s -> TWhile }
+  "ok can liao"      { \s -> TEndBlock }
   paiseh        { \s -> TThrow }
   simi          { \s -> TPrint }
   $digit+				{ \s -> TInt (read s) }
@@ -40,6 +41,7 @@ data Token =
   TThen      |
   TElse      |
   TWhile     |
+  TEndBlock     |
   TThrow     |
   TPrint     |
   TLit String |

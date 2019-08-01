@@ -85,6 +85,16 @@ evalOne (IfThenElse cmp exps1 exps2) state = do
             (val, state) <- evalAll exps2 state
             return (val, state)
 
+evalOne stmt@(While cmp exps) state = do
+    compareResult <- evalCmp cmp state
+    if compareResult
+        then return (StringVal "", state)
+        else do
+            print "Iteration"
+            print state
+            (val, state) <- evalAll exps state
+            evalOne stmt state 
+
 evalOne (Plus exp1 exp2) state = do
     (IntVal val1, _) <- evalOne exp1 state
     (IntVal val2, _) <- evalOne exp2 state

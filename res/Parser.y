@@ -14,6 +14,7 @@ import Lexer
     then { TThen }
     else { TElse }
     while { TWhile }
+    end { TEndBlock }
     throw { TThrow }
     print { TPrint }
     str { TLit $$ }
@@ -43,7 +44,8 @@ Exp : let var '=' Exp       { Let $2 $4 }
     | Exp '-' Exp           { Minus $1 $3 }
     | Exp '*' Exp           { Times $1 $3 }
     | Exp '/' Exp           { Div $1 $3 }
-    | Cmp if then Exps else Exps { IfThenElse $1 $4 $6 }
+    | while Cmp if Exps end { While $2 $4 }
+    | Cmp if then Exps else Exps end { IfThenElse $1 $4 $6 }
     | '(' Exp ')'           { $2 }
     | '-' Exp %prec NEG     { Negate $2 }
     | print Exp             { Print $2 }
@@ -67,6 +69,7 @@ data Exp = Let String Exp
          | Times Exp Exp
          | Div Exp Exp
          | IfThenElse Cmp [Exp] [Exp]
+         | While Cmp [Exp]
          | Negate Exp
          | Brack Exp
          | Print Exp
