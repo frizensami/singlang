@@ -9,15 +9,24 @@ data ProgramVal = StringVal String | IntVal Int
 instance Show ProgramVal where
     show (StringVal str) = str
     show (IntVal int) = show int
-data ProgramState = ProgramState { variables :: Map.HashMap String ProgramVal }
-
-newProgramState :: ProgramState
-newProgramState = ProgramState Map.empty
+data ProgramState = ProgramState { progvariables :: Map.HashMap String ProgramVal
+                                 , progconstants :: Map.HashMap String ProgramVal }
+                    deriving Show
 
 eval :: [Exp] -> IO ()
 eval exps = do 
-    evalAll exps newProgramState
+    state <- evalAll exps newProgramState
+    print state
     return ()
+
+newProgramState :: ProgramState
+newProgramState = ProgramState Map.empty Map.empty
+
+updateVariable :: ProgramState -> String -> ProgramVal -> ProgramState
+updateVariable oldstate str val = 
+    let 
+        oldvars = progvariables oldstate
+    in oldstate { progvariables = Map.insert str val oldvars}
 
 evalAll :: [Exp] -> ProgramState -> IO ProgramState
 evalAll [] state = return state 
@@ -26,14 +35,9 @@ evalAll (exp:exps) state = do
     evalAll exps state
 
 evalOne :: Exp -> ProgramState -> IO (ProgramVal, ProgramState)
-{- 
 evalOne (Let str exp) state = do
-    return (val, newState)
-        where 
-            oldState = variables state
-            (val, throwawaystate) = evalOne
-            newState = HashMap.insert str (evalOne exp)
--}
+    (evalVal, _) <- evalOne exp state
+    return (evalVal, updateVariable state str evalVal)
 
 evalOne (Plus exp1 exp2) state = do
     (IntVal val1, _) <- evalOne exp1 state
