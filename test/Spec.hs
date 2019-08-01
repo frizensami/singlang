@@ -8,7 +8,7 @@ import Parser
 main :: IO ()
 main = hspec $ do
     describe "Lexer" $ do
-        it "should parse simple let stmts" $
+        it "should lex simple let stmts" $
             let 
                 tokens = scanTokens "chope x = 5"
             in 
