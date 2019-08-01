@@ -1,1 +1,1 @@
-stack build && stack exec singlang-exe < test-full.in
+stack build && stack exec singlang-exe < test-full.lah

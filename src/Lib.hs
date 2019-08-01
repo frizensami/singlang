@@ -4,12 +4,13 @@ module Lib
 
 import qualified Lexer
 import qualified Parser
+import qualified Evaluator
 
-printParseTree :: [Parser.Exp] -> IO ()
-printParseTree [] = return ()
-printParseTree (exp:exps) = do
+printExpressions :: [Parser.Exp] -> IO ()
+printExpressions [] = return ()
+printExpressions (exp:exps) = do
     print exp
-    printParseTree exps
+    printExpressions exps
 
 interpret :: IO ()
 interpret = do
@@ -17,5 +18,7 @@ interpret = do
     let 
         tokens = Lexer.scanTokens code
         -- Need to reverse the parsed tree due to left recursion on expressions
-        parseTree = reverse $ Parser.parseTokens tokens
-    printParseTree parseTree
+        expressions = reverse $ Parser.parseTokens tokens
+    -- printExpressions expressions
+    Evaluator.eval expressions
+
