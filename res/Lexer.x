@@ -1,5 +1,5 @@
 {
-module Lexer (main, scanTokens, Token (..)) where
+module Lexer (lexermain, scanTokens, Token (..)) where
 }
 
 %wrapper "basic"
@@ -68,7 +68,7 @@ data Token =
 
 scanTokens = alexScanTokens
 
-main = do
+lexermain = do
   s <- getContents
   print (alexScanTokens s)
 }

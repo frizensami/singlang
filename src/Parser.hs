@@ -863,7 +863,7 @@ happySeq = happyDontSeq
 parseError :: [Token] -> a
 parseError _ = error "Parse error"
 
-data Exps = Exps [Exp] deriving Show
+data Exps = Exps [Exp] deriving (Show, Eq)
 
 data Exp = Let String Exp
          | Const String Exp
@@ -879,7 +879,7 @@ data Exp = Let String Exp
          | Int Int
          | Str String
          | Var String
-         deriving Show
+         deriving (Show, Eq)
 
 data Cmp = CmpEq Exp Exp 
          | CmpGT Exp Exp 
@@ -887,7 +887,7 @@ data Cmp = CmpEq Exp Exp
          | CmpGTE Exp Exp 
          | CmpLTE Exp Exp 
          | CmpNeq Exp Exp 
-         deriving Show
+         deriving (Show, Eq)
 {-# LINE 1 "templates/GenericTemplate.hs" #-}
 {-# LINE 1 "templates/GenericTemplate.hs" #-}
 {-# LINE 1 "<built-in>" #-}
