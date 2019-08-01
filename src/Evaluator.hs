@@ -15,7 +15,9 @@ data ProgramState = ProgramState { progvariables :: Map.HashMap String ProgramVa
 
 eval :: [Exp] -> IO ()
 eval exps = do 
+    putStr "\n---- Program Output ----\n"
     (_, state) <- evalAll exps newProgramState
+    putStr "---- Program Output Complete ----\n\nFinal Program State: \n"
     print state
     return ()
 
@@ -90,8 +92,6 @@ evalOne stmt@(While cmp exps) state = do
     if compareResult
         then return (StringVal "", state)
         else do
-            print "Iteration"
-            print state
             (val, state) <- evalAll exps state
             evalOne stmt state 
 

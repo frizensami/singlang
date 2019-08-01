@@ -78,3 +78,4 @@ Pre-requisites: Have `stack` installed (https://docs.haskellstack.org/en/stable/
 1. Clone this repository
 2. Run `stack build`
 3. Run `stack exec singlang-exe < test-basic.lah` to run the interpreter with the file `test-basic.lah` 
+    
