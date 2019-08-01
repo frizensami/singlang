@@ -1,10 +1,8 @@
 # Singlang: Now uncle also can code
 
-Ah boy ah, you think limpeh cannot code isit?   
-
 ## Example
 
-**Singlang**
+**Singlang:**
 
 ```
 confirm plus chop x = 5
@@ -21,10 +19,9 @@ wait long long, i = 5 meh?
 ok can liao
 
 simi i
-
 ```
 
-**But ang moh say**
+**But last time ang moh say:**
 
 ```
 const x = 5
@@ -43,13 +40,28 @@ print i
 
 ## Syntax
 
+### Keywords
+
 | Ang Moh | Singlang |
 | ------- | -------- |
-| if / test     | meh?     |
+| if / run comparison | meh?     |
 | then    | ok den   |
 | else    | alamak den |
 | end block | ok can liao | 
 | var     | chope    |
 | const   | confirm plus chop |
 | while | wait long long |
-| print | simi x |
+| print | simi |
+
+### Operators
+
+Must use `meh?` hor.
+
+| Operator | Use |
+| ------- | -------- |
+| = | Equality test: `x = 5 meh?` |
+| > | More than: `x > 5 meh?` |
+| < | Less than: `x < 5 meh?` |
+| >= | More than or equal to: `x >= 5 meh?` |
+| <= | Less than or equal to: `x <= 5 meh?` |
+| != | Not equal to: `x != 5 meh?` |
