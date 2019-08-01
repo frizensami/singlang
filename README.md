@@ -13,10 +13,14 @@ chope y = 1
 x = 5 meh?
     ok den chope y = 6
     alamak den chope y = 7
+ok can liao
 
+chope i = 0
+wait long long, i = 5 meh?
+    chope i = i + 1
+ok can liao
 
-wait long long, x = 5 meh?
-    ...
+simi i
 
 ```
 
@@ -30,20 +34,22 @@ if x = 5
     then y = 6
     else y = 7
 
+var i = 0
 while x != 5
-    ....
+    i = i + 1
 
+print i
 ```
 
 ## Syntax
 
-| Ang Moh | Singlang | Example |
-| ------- | -------- | ------- |
-| if      | meh?     | file_open meh? |
-| then    | ok den   | - |
-| else    | alamak den | - | 
-| var     | chope    | - |
-| const   | confirm plus chop | - |
-| return  | dabao    | - |
-| throw   | paiseh   | - |
-| while | wait long long | - |
+| Ang Moh | Singlang |
+| ------- | -------- |
+| if / test     | meh?     |
+| then    | ok den   |
+| else    | alamak den |
+| end block | ok can liao | 
+| var     | chope    |
+| const   | confirm plus chop |
+| while | wait long long |
+| print | simi x |
