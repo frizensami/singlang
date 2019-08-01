@@ -51,7 +51,7 @@ Exp : let var '=' Exp       { Let $2 $4 }
     | str                   { Str $1 }
     | var                   { Var $1 }
 
-Cmp : Exp '=' Exp { Cmp $1 $3 }
+Cmp : Exp '=' Exp { CmpEq $1 $3 }
 
 {
 
@@ -75,6 +75,6 @@ data Exp = Let String Exp
          | Var String
          deriving Show
 
-data Cmp = Cmp Exp Exp deriving Show
+data Cmp = CmpEq Exp Exp deriving Show
 
 }

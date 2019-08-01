@@ -75,8 +75,9 @@ evalOne (Var str) state =
                 (Just val) -> return (val, state)
                 Nothing -> error $ "var/const " ++ str ++ " not defined!"
 
-evalOne (IfThenElse cmp exps1 exps2) state =
-    if evalCmp cmp state
+evalOne (IfThenElse cmp exps1 exps2) state = do
+    compareResult <- evalCmp cmp state
+    if compareResult
         then do 
             (val, state) <- evalAll exps1 state
             return (val, state)
@@ -119,5 +120,14 @@ evalOne (Str val) state = return (StringVal val, state)
 evalOne exp _ = error $ "Cannot parse " ++ show exp
 
 
-evalCmp :: Cmp -> ProgramState -> Bool
-evalCmp _ _ = True
+evalCmp :: Cmp -> ProgramState -> IO Bool
+evalCmp (CmpEq exp1 exp2) state = do
+    (val1, _) <- evalOne exp1 state
+    (val2, _) <- evalOne exp2 state
+    return (compareProgramVal val1 val2 == EQ)
+
+compareProgramVal :: ProgramVal -> ProgramVal  -> Ordering
+compareProgramVal (IntVal v1) (IntVal v2) = compare v1 v2
+compareProgramVal (StringVal v1) (StringVal v2) = compare v1 v2
+compareProgramVal v1 v2 = error $ "Cannot compare values " ++ show v1 ++ " and " ++ show v2
+

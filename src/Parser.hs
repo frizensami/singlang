@@ -470,7 +470,7 @@ happyReduction_16 (HappyAbsSyn5  happy_var_3)
 	_
 	(HappyAbsSyn5  happy_var_1)
 	 =  HappyAbsSyn6
-		 (Cmp happy_var_1 happy_var_3
+		 (CmpEq happy_var_1 happy_var_3
 	)
 happyReduction_16 _ _ _  = notHappyAtAll 
 
@@ -553,7 +553,7 @@ data Exp = Let String Exp
          | Var String
          deriving Show
 
-data Cmp = Cmp Exp Exp deriving Show
+data Cmp = CmpEq Exp Exp deriving Show
 {-# LINE 1 "templates/GenericTemplate.hs" #-}
 {-# LINE 1 "templates/GenericTemplate.hs" #-}
 {-# LINE 1 "<built-in>" #-}

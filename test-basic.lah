@@ -13,7 +13,7 @@ simi "Hello!"
 simi (-3 + 2)
 simi ((2 * 2) * 3)
 
-x = 5 meh?
+x = 3 meh?
     ok den 
         chope a = 1
         chope b = 2
