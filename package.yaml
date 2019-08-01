@@ -24,6 +24,8 @@ dependencies:
 - array
 - parsec
 - unordered-containers
+- hspec
+- QuickCheck
 
 library:
   source-dirs: src
