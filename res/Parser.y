@@ -12,6 +12,7 @@ import Lexer
     const { TConst }
     if { TIf }
     then { TThen }
+    else { TElse }
     while { TWhile }
     throw { TThrow }
     print { TPrint }
@@ -42,6 +43,7 @@ Exp : let var '=' Exp       { Let $2 $4 }
     | Exp '-' Exp           { Minus $1 $3 }
     | Exp '*' Exp           { Times $1 $3 }
     | Exp '/' Exp           { Div $1 $3 }
+    | Cmp if then Exps else Exps { IfThenElse $1 $4 $6 }
     | '(' Exp ')'           { $2 }
     | '-' Exp %prec NEG     { Negate $2 }
     | print Exp             { Print $2 }
@@ -49,12 +51,14 @@ Exp : let var '=' Exp       { Let $2 $4 }
     | str                   { Str $1 }
     | var                   { Var $1 }
 
+Cmp : Exp '=' Exp { Cmp $1 $3 }
+
 {
 
 parseError :: [Token] -> a
 parseError _ = error "Parse error"
 
-data Exps = Exps [Exp]
+data Exps = Exps [Exp] deriving Show
 
 data Exp = Let String Exp
          | Const String Exp
@@ -62,6 +66,7 @@ data Exp = Let String Exp
          | Minus Exp Exp
          | Times Exp Exp
          | Div Exp Exp
+         | IfThenElse Cmp [Exp] [Exp]
          | Negate Exp
          | Brack Exp
          | Print Exp
@@ -69,4 +74,7 @@ data Exp = Let String Exp
          | Str String
          | Var String
          deriving Show
+
+data Cmp = Cmp Exp Exp deriving Show
+
 }

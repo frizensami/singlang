@@ -19,6 +19,6 @@ interpret = do
         tokens = Lexer.scanTokens code
         -- Need to reverse the parsed tree due to left recursion on expressions
         expressions = reverse $ Parser.parseTokens tokens
-    -- printExpressions expressions
+    printExpressions expressions
     Evaluator.eval expressions
 

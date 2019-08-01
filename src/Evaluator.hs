@@ -15,7 +15,7 @@ data ProgramState = ProgramState { progvariables :: Map.HashMap String ProgramVa
 
 eval :: [Exp] -> IO ()
 eval exps = do 
-    state <- evalAll exps newProgramState
+    (_, state) <- evalAll exps newProgramState
     print state
     return ()
 
@@ -40,10 +40,10 @@ updateConst oldstate str val =
         oldconsts = progconstants oldstate
     in oldstate { progconstants = Map.insert str val oldconsts }
 
-evalAll :: [Exp] -> ProgramState -> IO ProgramState
-evalAll [] state = return state 
+evalAll :: [Exp] -> ProgramState -> IO (ProgramVal, ProgramState)
+evalAll [] state = return (StringVal "", state)
 evalAll (exp:exps) state = do
-    (_, state) <- evalOne exp state
+    (val, state) <- evalOne exp state
     evalAll exps state
 
 evalOne :: Exp -> ProgramState -> IO (ProgramVal, ProgramState)
@@ -75,6 +75,14 @@ evalOne (Var str) state =
                 (Just val) -> return (val, state)
                 Nothing -> error $ "var/const " ++ str ++ " not defined!"
 
+evalOne (IfThenElse cmp exps1 exps2) state =
+    if evalCmp cmp state
+        then do 
+            (val, state) <- evalAll exps1 state
+            return (val, state)
+        else do
+            (val, state) <- evalAll exps2 state
+            return (val, state)
 
 evalOne (Plus exp1 exp2) state = do
     (IntVal val1, _) <- evalOne exp1 state
@@ -111,3 +119,5 @@ evalOne (Str val) state = return (StringVal val, state)
 evalOne exp _ = error $ "Cannot parse " ++ show exp
 
 
+evalCmp :: Cmp -> ProgramState -> Bool
+evalCmp _ _ = True
