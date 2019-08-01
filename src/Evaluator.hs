@@ -66,6 +66,15 @@ evalOne (Const str exp) state = do
                 return (evalVal, updateConst newstate str evalVal)
         else return (evalVal, updateConst state str evalVal)
 
+evalOne (Var str) state =
+    -- Do not allow let expressions to override things that are marked const
+    case Map.lookup str (progvariables state) of
+        (Just val) -> return (val, state)
+        Nothing -> 
+            case Map.lookup str (progconstants state) of
+                (Just val) -> return (val, state)
+                Nothing -> error $ "var/const " ++ str ++ " not defined!"
+
 
 evalOne (Plus exp1 exp2) state = do
     (IntVal val1, _) <- evalOne exp1 state

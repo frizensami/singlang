@@ -1,7 +1,14 @@
 -- confirm plus chop x = (6 + 7)
 chope x = (6 + 7)
 confirm plus chop x = 55
-simi (2 + (2 + 3))
+simi (x + 2 + (2 + 3))
+
+chope y = "This is a string var"
+simi y
+
+confirm plus chop z = "This is a const string"
+simi z
+
 simi "Hello!"
 simi (-3 + 2)
 simi ((2 * 2) * 3)
