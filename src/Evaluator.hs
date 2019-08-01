@@ -26,18 +26,46 @@ updateVariable :: ProgramState -> String -> ProgramVal -> ProgramState
 updateVariable oldstate str val = 
     let 
         oldvars = progvariables oldstate
-    in oldstate { progvariables = Map.insert str val oldvars}
+    in oldstate { progvariables = Map.insert str val oldvars }
+
+deleteVariable :: ProgramState -> String -> ProgramState
+deleteVariable oldstate str = 
+    let 
+        oldvars = progvariables oldstate
+    in oldstate { progvariables = Map.delete str oldvars }
+
+updateConst :: ProgramState -> String -> ProgramVal -> ProgramState
+updateConst oldstate str val = 
+    let 
+        oldconsts = progconstants oldstate
+    in oldstate { progconstants = Map.insert str val oldconsts }
 
 evalAll :: [Exp] -> ProgramState -> IO ProgramState
 evalAll [] state = return state 
 evalAll (exp:exps) state = do
-    (val, state) <- evalOne exp state
+    (_, state) <- evalOne exp state
     evalAll exps state
 
 evalOne :: Exp -> ProgramState -> IO (ProgramVal, ProgramState)
-evalOne (Let str exp) state = do
+evalOne (Let str exp) state =
+    -- Do not allow let expressions to override things that are marked const
+    if Map.member str (progconstants state)
+        then error $ "ERROR: Redefinition of constant " ++ str
+    else do
+        (evalVal, _) <- evalOne exp state
+        return (evalVal, updateVariable state str evalVal)
+
+evalOne (Const str exp) state = do
+    -- Check for shadowing and erase var if const shadows it
     (evalVal, _) <- evalOne exp state
-    return (evalVal, updateVariable state str evalVal)
+    if Map.member str (progvariables state)
+        then 
+            let 
+                newstate = deleteVariable state str
+            in 
+                return (evalVal, updateConst newstate str evalVal)
+        else return (evalVal, updateConst state str evalVal)
+
 
 evalOne (Plus exp1 exp2) state = do
     (IntVal val1, _) <- evalOne exp1 state

@@ -1,4 +1,6 @@
+-- confirm plus chop x = (6 + 7)
 chope x = (6 + 7)
+confirm plus chop x = 55
 simi (2 + (2 + 3))
 simi "Hello!"
 simi (-3 + 2)
