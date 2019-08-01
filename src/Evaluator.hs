@@ -136,6 +136,31 @@ evalCmp (CmpEq exp1 exp2) state = do
     (val2, _) <- evalOne exp2 state
     return (compareProgramVal val1 val2 == EQ)
 
+evalCmp (CmpLT exp1 exp2) state = do
+    (val1, _) <- evalOne exp1 state
+    (val2, _) <- evalOne exp2 state
+    return (compareProgramVal val1 val2 == LT)
+
+evalCmp (CmpGT exp1 exp2) state = do
+    (val1, _) <- evalOne exp1 state
+    (val2, _) <- evalOne exp2 state
+    return (compareProgramVal val1 val2 == GT)
+
+evalCmp (CmpGTE exp1 exp2) state = do
+    (val1, _) <- evalOne exp1 state
+    (val2, _) <- evalOne exp2 state
+    return (compareProgramVal val1 val2 == GT || compareProgramVal val1 val2 == EQ)
+
+evalCmp (CmpLTE exp1 exp2) state = do
+    (val1, _) <- evalOne exp1 state
+    (val2, _) <- evalOne exp2 state
+    return (compareProgramVal val1 val2 == LT || compareProgramVal val1 val2 == EQ)
+
+evalCmp (CmpNeq exp1 exp2) state = do
+    (val1, _) <- evalOne exp1 state
+    (val2, _) <- evalOne exp2 state
+    return (compareProgramVal val1 val2 /= EQ)
+
 compareProgramVal :: ProgramVal -> ProgramVal  -> Ordering
 compareProgramVal (IntVal v1) (IntVal v2) = compare v1 v2
 compareProgramVal (StringVal v1) (StringVal v2) = compare v1 v2

@@ -24,6 +24,6 @@ t = 17 meh?
 ok can liao
 
 chope i = 0
-wait long long, i = 5 meh?
+wait long long, i != 0 meh?
    chope i = i + 1
 ok can liao

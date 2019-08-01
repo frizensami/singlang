@@ -28,6 +28,11 @@ tokens :-
   \/            { \s -> TDiv }
   \(            { \s -> TLParen }
   \)            { \s -> TRParen }
+  \<            { \s -> TLArrow }
+  \>            { \s -> TRArrow }
+  \<=            { \s -> TLEArrow }
+  \>=            { \s -> TREArrow }
+  \!=            { \s -> TNeq }
   $alpha [$alpha $digit \_ \']*		{ \s -> TVar s }
 
 {
@@ -52,6 +57,11 @@ data Token =
   TDiv |
   TLParen |
   TRParen |
+  TLArrow |
+  TRArrow |
+  TLEArrow |
+  TREArrow |
+  TNeq |
   TVar String  |
   TInt Int
   deriving (Eq,Show)

@@ -27,6 +27,11 @@ import Lexer
     '/' { TDiv }
     '(' { TLParen }
     ')' { TRParen }
+    '<' { TLArrow }
+    '>' { TRArrow }
+    '<=' { TLEArrow }
+    '>=' { TREArrow }
+    '!=' { TNeq }
 
 %left '+' '-'
 %left '*' '/'
@@ -54,6 +59,11 @@ Exp : let var '=' Exp       { Let $2 $4 }
     | var                   { Var $1 }
 
 Cmp : Exp '=' Exp { CmpEq $1 $3 }
+    | Exp '>' Exp { CmpGT $1 $3 }
+    | Exp '<' Exp { CmpLT $1 $3 }
+    | Exp '>=' Exp { CmpGTE $1 $3 }
+    | Exp '<=' Exp { CmpLTE $1 $3 }
+    | Exp '!=' Exp { CmpNeq $1 $3 }
 
 {
 
@@ -78,6 +88,12 @@ data Exp = Let String Exp
          | Var String
          deriving Show
 
-data Cmp = CmpEq Exp Exp deriving Show
+data Cmp = CmpEq Exp Exp 
+         | CmpGT Exp Exp 
+         | CmpLT Exp Exp 
+         | CmpGTE Exp Exp 
+         | CmpLTE Exp Exp 
+         | CmpNeq Exp Exp 
+         deriving Show
 
 }
