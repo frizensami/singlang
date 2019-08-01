@@ -124,6 +124,10 @@ evalOne (Print exp) state = do
     print val
     return (StringVal (show val), state)
 
+evalOne (Throw str) state = do
+    putStrLn $ "Exception thrown: " ++ str
+    error "User exception triggered."
+
 evalOne (Int val) state = return (IntVal val, state)
 evalOne (Str val) state = return (StringVal val, state)
 

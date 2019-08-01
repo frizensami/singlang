@@ -27,3 +27,5 @@ chope i = 0
 wait long long, i != 0 meh?
    chope i = i + 1
 ok can liao
+
+paiseh "CMI liao"

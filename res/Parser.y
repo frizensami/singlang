@@ -54,6 +54,7 @@ Exp : let var '=' Exp       { Let $2 $4 }
     | '(' Exp ')'           { $2 }
     | '-' Exp %prec NEG     { Negate $2 }
     | print Exp             { Print $2 }
+    | throw str             { Throw $2 }
     | int                   { Int $1 }
     | str                   { Str $1 }
     | var                   { Var $1 }
@@ -83,6 +84,7 @@ data Exp = Let String Exp
          | Negate Exp
          | Brack Exp
          | Print Exp
+         | Throw String
          | Int Int
          | Str String
          | Var String
