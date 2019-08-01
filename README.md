@@ -19,6 +19,8 @@ wait long long, i = 5 meh?
 ok can liao
 
 simi i
+
+-- This is a comment
 ```
 
 **But last time ang moh say:**
@@ -36,6 +38,8 @@ while x != 5
     i = i + 1
 
 print i
+
+// This is a comment
 ```
 
 ## Syntax
@@ -52,6 +56,7 @@ print i
 | const   | confirm plus chop |
 | while | wait long long |
 | print | simi |
+| -- | Comment out rest of the line |
 
 ### Operators
 
@@ -65,3 +70,11 @@ Must use `meh?` hor.
 | >= | More than or equal to: `x >= 5 meh?` |
 | <= | Less than or equal to: `x <= 5 meh?` |
 | != | Not equal to: `x != 5 meh?` |
+
+
+## Running the interpreter
+Pre-requisites: Have `stack` installed (https://docs.haskellstack.org/en/stable/README/), have some command-line familiarity.
+
+1. Clone this repository
+2. Run `stack build`
+3. Run `stack exec singlang-exe < test-basic.lah` to run the interpreter with the file `test-basic.lah` 
