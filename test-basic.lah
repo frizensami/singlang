@@ -1,2 +1,4 @@
-simi 2 + 3
+simi (2 + (2 + 3))
 simi "Hello!"
+simi (-3 + 2)
+simi ((2 * 2) * 3)

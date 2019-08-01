@@ -45,6 +45,20 @@ evalOne (Minus exp1 exp2) state = do
     (IntVal val2, _) <- evalOne exp2 state
     return (IntVal (val1 - val2), state)
 
+evalOne (Times exp1 exp2) state = do
+    (IntVal val1, _) <- evalOne exp1 state
+    (IntVal val2, _) <- evalOne exp2 state
+    return (IntVal (val1 * val2), state)
+
+evalOne (Div exp1 exp2) state = do
+    (IntVal val1, _) <- evalOne exp1 state
+    (IntVal val2, _) <- evalOne exp2 state
+    return (IntVal (val1 `div` val2), state)
+
+evalOne (Negate exp) state = do
+    (IntVal val, _) <- evalOne exp state
+    return (IntVal (negate val), state)
+
 evalOne (Print exp) state = do
     (val, _) <- evalOne exp state
     print val
