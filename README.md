@@ -69,7 +69,7 @@ print your_input
 
 | Ang Moh | Singlang |
 | ------- | -------- |
-| if / run comparison | meh?     |
+| if / boolean test | meh?     |
 | then    | ok den   |
 | else    | alamak den |
 | end block | ok can liao | 
