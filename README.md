@@ -1,5 +1,16 @@
 # Singlang: Now uncle also can code
 
+<!-- TOC depthFrom:2 -->
+
+- [Example](#example)
+- [Syntax](#syntax)
+    - [Keywords](#keywords)
+    - [Operators](#operators)
+- [Running the interpreter](#running-the-interpreter)
+- [Status](#status)
+
+<!-- /TOC -->
+
 ## Example
 
 **Singlang:**
@@ -28,7 +39,7 @@ simi your_input
 -- This is a comment
 ```
 
-**But last time ang moh say something like:**
+**But last time ang moh say one:**
 
 ```
 const x = 5
