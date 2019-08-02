@@ -19,6 +19,7 @@ tokens :-
   "ok can liao"      { \s -> TEndBlock }
   paiseh        { \s -> TThrow }
   simi          { \s -> TPrint }
+  makan         { \s -> TRead }
   $digit+				{ \s -> TInt (read s) }
   \".*\"        { \s -> TLit s }
   \=            { \s -> TEq }
@@ -49,6 +50,7 @@ data Token =
   TEndBlock     |
   TThrow     |
   TPrint     |
+  TRead     |
   TLit String |
   TEq |
   TPlus |

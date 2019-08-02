@@ -56,6 +56,7 @@ print i
 | const   | confirm plus chop |
 | while | wait long long |
 | print | simi |
+| read line | makan |
 | -- | Comment out rest of the line |
 
 ### Operators

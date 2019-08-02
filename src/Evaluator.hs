@@ -4,6 +4,7 @@ module Evaluator
 
 import Parser
 import qualified Data.HashMap.Strict as Map
+import System.IO
 
 data ProgramVal = StringVal String | IntVal Int
 instance Show ProgramVal where
@@ -127,6 +128,11 @@ evalOne (Print exp) state = do
 evalOne (Throw str) state = do
     putStrLn $ "Exception thrown: " ++ str
     error "User exception triggered."
+
+evalOne Read state = do
+    hFlush stdout
+    val <- getLine
+    return (StringVal val, state)
 
 evalOne (Int val) state = return (IntVal val, state)
 evalOne (Str val) state = return (StringVal val, state)

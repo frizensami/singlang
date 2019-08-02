@@ -17,6 +17,7 @@ import Lexer
     end { TEndBlock }
     throw { TThrow }
     print { TPrint }
+    read { TRead }
     str { TLit $$ }
     var { TVar $$ }
     int { TInt $$ }
@@ -53,8 +54,9 @@ Exp : let var '=' Exp       { Let $2 $4 }
     | Cmp if then Exps else Exps end { IfThenElse $1 $4 $6 }
     | '(' Exp ')'           { $2 }
     | '-' Exp %prec NEG     { Negate $2 }
-    | print Exp             { Print $2 }
     | throw str             { Throw $2 }
+    | print Exp             { Print $2 }
+    | read                  { Read }
     | int                   { Int $1 }
     | str                   { Str $1 }
     | var                   { Var $1 }
@@ -83,8 +85,9 @@ data Exp = Let String Exp
          | While Cmp [Exp]
          | Negate Exp
          | Brack Exp
-         | Print Exp
          | Throw String
+         | Print Exp
+         | Read
          | Int Int
          | Str String
          | Var String

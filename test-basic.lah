@@ -28,4 +28,9 @@ wait long long, i != 0 meh?
    chope i = i + 1
 ok can liao
 
-paiseh "CMI liao"
+simi "Enter something: "
+chope input = makan 
+simi "This is your input""
+simi input
+
+-- paiseh "CMI liao"
