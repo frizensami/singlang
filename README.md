@@ -20,10 +20,15 @@ ok can liao
 
 simi i
 
+simi "Enter something: "
+chope your_input = makan
+simi "What you typed: "
+simi your_input
+
 -- This is a comment
 ```
 
-**But last time ang moh say:**
+**But last time ang moh say something like:**
 
 ```
 const x = 5
@@ -38,6 +43,11 @@ while x != 5
     i = i + 1
 
 print i
+
+print "Enter something: "
+var your_input = readLine()
+print "What you typed: "
+print your_input
 
 // This is a comment
 ```
