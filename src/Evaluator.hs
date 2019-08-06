@@ -126,7 +126,7 @@ evalOne (Print exp) state = do
     return (StringVal (show val), state)
 
 evalOne (Throw str) state = do
-    putStrLn $ "Exception thrown: " ++ str
+    putStrLn $ "SIAO LIAO: Exception thrown - " ++ str
     error "User exception triggered."
 
 evalOne Read state = do
