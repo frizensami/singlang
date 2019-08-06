@@ -70,7 +70,7 @@ evalOne (Const str exp) state = do
         else return (evalVal, updateConst state str evalVal)
 
 evalOne (Var str) state =
-    -- Do not allow let expressions to override things that are marked const
+    -- Variables must be declared!
     case Map.lookup str (progvariables state) of
         (Just val) -> return (val, state)
         Nothing -> 
