@@ -1,17 +1,24 @@
-# Singlang: Now uncle also can code
+# Singlang v2: Now Uncle also can code
 
 <!-- TOC depthFrom:2 -->
 
-- [Example](#example)
-- [Syntax](#syntax)
-    - [Keywords](#keywords)
-    - [Operators](#operators)
-- [Running the interpreter](#running-the-interpreter)
-- [Status](#status)
+- [Why leh](#why-leh)
+- [Simi *Singlang*?](#simi-singlang)
+- [Uncle i still dun understand](#uncle-i-still-dun-understand)
+    - [The Key Words liddat](#the-key-words-liddat)
+    - [Den the Operators liddat](#den-the-operators-liddat)
+- [Uncle I want to try!](#uncle-i-want-to-try)
+- [Uncle I want more Singlang!](#uncle-i-want-more-singlang)
+- [How to help you Uncle?](#how-to-help-you-uncle)
 
 <!-- /TOC -->
 
-## Example
+## Why leh
+Last time Uncle Seng tell ang moh friend that he want go work at the Face Book la. He say no more money liao, every week play 4D but always choose wrong one. He say if he go America there and make money by writing codes, can come back and play more 4D. Huat ah!
+
+But ang moh tell Uncle Seng that his England sibei cui one, sure cannot make it through the "coding interview". Wah, then Uncle Seng super angry. He say then he dunnid the C++ la, Java la, he say if *Singaporean* can make *Singlish*, *limpeh* can make *Singlang*.  
+
+## Simi *Singlang*?
 
 **Singlang:**
 
@@ -31,41 +38,47 @@ ok can liao
 
 simi i
 
-simi "Enter something: "
+simi "Say something leh: "
 chope your_input = makan
-simi "What you typed: "
+simi "ok u say: "
 simi your_input
 
--- This is a comment
+-- Dis one uncle's comment
 ```
 
 **But last time ang moh say one:**
 
 ```
-const x = 5
-var y = 1
+const x = 5;
+let y = 1;
 
-if x = 5
-    then y = 6
-    else y = 7
+if (x == 5) {
+    y = 6;
+} else {
+    y = 7;
+}
 
-var i = 0
-while x != 5
-    i = i + 1
+let i = 0;
 
-print i
+while (x != 5) {
+    i = i + 1;
+}
 
-print "Enter something: "
-var your_input = readLine()
-print "What you typed: "
-print your_input
+console.log(i);
+
+console.log("Enter something: ");
+let your_input = readLine();
+console.log("What you typed: ");
+console.log(your_input);
 
 // This is a comment
 ```
 
-## Syntax
+## Uncle i still dun understand
 
-### Keywords
+OK la uncle show you.
+
+### The Key Words liddat
 
 | Ang Moh | Singlang |
 | ------- | -------- |
@@ -80,26 +93,30 @@ print your_input
 | read line | makan |
 | -- | Comment out rest of the line |
 
-### Operators
+### Den the Operators liddat
 
 Must use `meh?` hor.
 
 | Operator | Use |
 | ------- | -------- |
-| = | Equality test: `x = 5 meh?` |
-| > | More than: `x > 5 meh?` |
-| < | Less than: `x < 5 meh?` |
-| >= | More than or equal to: `x >= 5 meh?` |
-| <= | Less than or equal to: `x <= 5 meh?` |
-| != | Not equal to: `x != 5 meh?` |
+| `=` | Equality: `x = 5 meh?` |
+| `>` | More than: `x > 5 meh?` |
+| `<` | Less than: `x < 5 meh?` |
+| `>=` | More than or equal to: `x >= 5 meh?` |
+| `<=` | Less than or equal to: `x <= 5 meh?` |
+| `!=` | Not equal to: `x != 5 meh?` |
 
 
-## Running the interpreter
-Pre-requisites: Have `stack` installed (https://docs.haskellstack.org/en/stable/README/), have some command-line familiarity.
+## Uncle I want to try!
+OK Uncle tell you how.
 
-1. Clone this repository
-2. Run `stack build`
-3. Run `stack exec singlang-exe < test-basic.lah` to run the interpreter with the file `test-basic.lah` 
+1. You go install `stack` (https://docs.haskellstack.org/en/stable/README/), den learn how to use the "command line" abit abit .
+2. Clone this repository (top right got big green button one).
+2. Go the command line den run the `stack build`.
+4. You faster test by running `stack exec singlang-exe < test-basic.lah` - liddat the "interpreter" run the codes inside `test-basic.lah`.
 
-## Status
-Work-in-progress. More keywords are intended for the core language.  
+## Uncle I want more Singlang!
+Uncle release vee-one liao. Uncle release vee-two soon but he cannot pay his StarHub bill. Everyday play 4D then DBS tell him only got $2.27 left. Maybe can take money from CPF...
+
+## How to help you Uncle?
+You go the "issues" there and tell Uncle what to put into Singlang. 
