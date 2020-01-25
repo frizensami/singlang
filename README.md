@@ -5,10 +5,11 @@
 - [Why leh](#why-leh)
 - [Simi *Singlang*?](#simi-singlang)
 - [Uncle i still dun understand](#uncle-i-still-dun-understand)
-    - [The Key Words hor](#the-key-words-hor)
-    - [Den the Operators hor](#den-the-operators-hor)
+    - [The Key Words liddat](#the-key-words-liddat)
+    - [Den the Operators liddat](#den-the-operators-liddat)
 - [Uncle I want to try!](#uncle-i-want-to-try)
-- [Status](#status)
+- [Uncle I want more Singlang!](#uncle-i-want-more-singlang)
+- [How to help you Uncle?](#how-to-help-you-uncle)
 
 <!-- /TOC -->
 
@@ -77,7 +78,7 @@ console.log(your_input);
 
 OK la uncle show you.
 
-### The Key Words hor
+### The Key Words liddat
 
 | Ang Moh | Singlang |
 | ------- | -------- |
@@ -92,9 +93,9 @@ OK la uncle show you.
 | read line | makan |
 | -- | Comment out rest of the line |
 
-### Den the Operators hor
+### Den the Operators liddat
 
-Must use `meh?` hor otherwise cmi.
+Must use `meh?` hor.
 
 | Operator | Use |
 | ------- | -------- |
@@ -114,5 +115,8 @@ OK Uncle tell you how.
 2. Go the command line den run the `stack build`.
 4. You faster test by running `stack exec singlang-exe < test-basic.lah` - liddat the "interpreter" run the codes inside `test-basic.lah`.
 
-## Status
-Uncle release vee-one liao. Uncle release vee-two soon but he dowan pay his StarHub bill. Everyday play 4D then DBS tell him only got $2.27 left. Maybe can take money from CPF...
+## Uncle I want more Singlang!
+Uncle release vee-one liao. Uncle release vee-two soon but he cannot pay his StarHub bill. Everyday play 4D then DBS tell him only got $2.27 left. Maybe can take money from CPF...
+
+## How to help you Uncle?
+You go the "issues" there and tell Uncle what to put into Singlang. 
