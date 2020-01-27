@@ -123,10 +123,8 @@ Uncle release vee-one liao. Uncle release vee-two soon but he cannot pay his Sta
 You go the "issues" there and tell Uncle what to put into Singlang. 
 
 ## Uncle explain abit
-<!--
 <details><summary>Click to expand</summary>
 <p>
--->
 Actually, Uncle get his ang moh friend to explain abit.
 
 
@@ -155,6 +153,8 @@ After this, the individual expressions are defined, usually recursively (see the
 
 To **autogenerate the actual Parser.hs file from Parser.y**, use the `run_happy.sh` script provided.
 
-<!--
+**Verbose mode**
+
+Verbose debug info (parse tree) can be printed with the `-v` option. E.g. `stack exec singlang-exe -- test-basic.lah -v`.
+
 </details>
--->

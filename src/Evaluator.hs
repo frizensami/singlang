@@ -5,6 +5,8 @@ module Evaluator
 import Parser
 import qualified Data.HashMap.Strict as Map
 import System.IO
+import Control.Monad (when)
+import Defs (Verbosity(..))
 
 data ProgramVal = StringVal String | IntVal Int
 instance Show ProgramVal where
@@ -14,12 +16,16 @@ data ProgramState = ProgramState { progvariables :: Map.HashMap String ProgramVa
                                  , progconstants :: Map.HashMap String ProgramVal }
                     deriving Show
 
-eval :: [Exp] -> IO ()
-eval exps = do 
-    putStr "\n---- Program Output ----\n"
+eval :: Verbosity -> [Exp] -> IO ()
+eval verbosity exps = do 
+    when (verbosity == Verbose) $ putStr "\n---- Program Output ----\n"
+
+    -- Call to evaluate all expressions
     (_, state) <- evalAll exps newProgramState
-    putStr "---- Program Output Complete ----\n\nFinal Program State: \n"
-    print state
+
+    when (verbosity == Verbose) $ do
+        putStr "---- Program Output Complete ----\n\nFinal Program State: \n"
+        print state
     return ()
 
 newProgramState :: ProgramState
