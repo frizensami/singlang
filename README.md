@@ -1,6 +1,6 @@
 # Singlang v2: Now Uncle also can code
 
-<!-- TOC depthFrom:2 -->
+<!-- TOC depthFrom:2 depthTo:4 -->
 
 - [Why leh](#why-leh)
 - [Simi *Singlang*?](#simi-singlang)
@@ -10,6 +10,7 @@
 - [Uncle I want to try!](#uncle-i-want-to-try)
 - [Uncle I want more Singlang!](#uncle-i-want-more-singlang)
 - [How to help you Uncle?](#how-to-help-you-uncle)
+- [Uncle explain abit](#uncle-explain-abit)
 
 <!-- /TOC -->
 
@@ -117,6 +118,43 @@ OK Uncle tell you how.
 
 ## Uncle I want more Singlang!
 Uncle release vee-one liao. Uncle release vee-two soon but he cannot pay his StarHub bill. Everyday play 4D then DBS tell him only got $2.27 left. Maybe can take money from CPF...
-
+ *tokens* in the language and what Haskell constructs they map to. 
 ## How to help you Uncle?
 You go the "issues" there and tell Uncle what to put into Singlang. 
+
+## Uncle explain abit
+<!--
+<details><summary>Click to expand</summary>
+<p>
+-->
+Actually, Uncle get his ang moh friend to explain abit.
+
+
+**Defining the Language**
+
+The entire language is defined in two files: `res/Lexer.x` and `res/Parser.y`. Note that *Singlang* is a completely defined language on its own, and is not doing string replacement followed by running another language's interpreter. This is to allow for unique syntax and semantics moving forward. 
+
+**Lexer**
+
+`Lexer.x` defines the *tokens* in the language and what Haskell constructs they map to. 
+
+For example, digits in the language are defined as:
+```
+  $digit+				{ \s -> TInt (read s) }
+```
+
+Correspondingly, the `data` definition for the `Token` type has a definition for `TInt Int`. These two constructs define the tokenization for a particular token type.
+
+To **autogenerate the actual Lexer.hs file from Lexer.x**, use the `run_alex.sh` script provided.
+
+**Parser**
+
+`Parser.y` defines the actual syntax of the language (i.e. how the tokens should be combined together). It starts with a `%token` definition which maps the token constructs to a shorter name to be used in the syntax definitions. 
+
+After this, the individual expressions are defined, usually recursively (see the definition for `Exps` and follow the individual sub-definitions). 
+
+To **autogenerate the actual Parser.hs file from Parser.y**, use the `run_happy.sh` script provided.
+
+<!--
+</details>
+-->
