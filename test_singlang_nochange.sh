@@ -1,1 +1,1 @@
-stack build && stack exec singlang-exe < test-basic.lah
+stack build && stack exec singlang-exe test-basic.lah
