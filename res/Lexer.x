@@ -10,6 +10,8 @@ $alpha = [a-zA-Z]		-- alphabetic characters
 tokens :-  
   $white+				;
   "--".*				;
+  "ok uncle tell you story ah..." {\s -> TProgStart}
+  "ok uncle finish liao" {\s -> TProgEnd}
   chope					{ \s -> TLet }
   "confirm plus chop" { \s -> TConst }
   "meh?"        { \s -> TIf }
@@ -42,6 +44,8 @@ tokens :-
 
 -- The token type:
 data Token =
+  TProgStart |
+  TProgEnd   |
   TLet     |
   TConst     |
   TIf        |

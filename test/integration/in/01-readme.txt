@@ -1,3 +1,5 @@
+ok uncle tell you story ah...
+
 confirm plus chop x is 5
 chope y as 1
 
@@ -19,3 +21,5 @@ simi "ok u say: "
 simi u_say
 
 -- Dis one uncle's comment
+
+ok uncle finish liao

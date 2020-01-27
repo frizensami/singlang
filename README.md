@@ -5,6 +5,7 @@
 - [Why leh](#why-leh)
 - [Simi *Singlang*?](#simi-singlang)
 - [Uncle i still dun understand](#uncle-i-still-dun-understand)
+    - [Must tell story](#must-tell-story)
     - [The Key Words liddat](#the-key-words-liddat)
     - [Den the Operators liddat](#den-the-operators-liddat)
 - [Uncle I want to try!](#uncle-i-want-to-try)
@@ -23,6 +24,8 @@ But ang moh tell Uncle Seng that his England sibei cui one, sure cannot make it 
 
 **Singlang:**
 ```
+ok uncle tell you story ah...
+
 confirm plus chop x is 5
 chope y as 1
 
@@ -44,6 +47,8 @@ simi "ok u say: "
 simi u_say
 
 -- Dis one uncle's comment
+
+ok uncle finish liao
 ```
 
 **But last time ang moh say one:**
@@ -78,6 +83,16 @@ console.log(your_input);
 
 OK la uncle show you.
 
+### Must tell story
+
+If u wan write *Singlang* codes, need start with
+
+`ok uncle tell you story ah...`
+
+then u end with
+
+`ok uncle finish liao`
+
 ### The Key Words liddat
 
 | Ang Moh | Singlang |
@@ -92,7 +107,7 @@ OK la uncle show you.
 | while | `wait long long` |
 | print | `simi` |
 | read line | `makan` |
-| -- | Comment out rest of the line |
+| `//` for comments | `--` |
 
 ### Den the Operators liddat
 
@@ -118,7 +133,7 @@ OK Uncle tell you how.
 
 ## Uncle I want more Singlang!
 Uncle release vee-one liao. Uncle release vee-two soon but he cannot pay his StarHub bill. Everyday play 4D then DBS tell him only got $2.27 left. Maybe can take money from CPF...
- *tokens* in the language and what Haskell constructs they map to. 
+
 ## How to help you Uncle?
 You go the "issues" there and tell Uncle what to put into Singlang. 
 
@@ -156,5 +171,9 @@ To **autogenerate the actual Parser.hs file from Parser.y**, use the `run_happy.
 **Verbose mode**
 
 Verbose debug info (parse tree) can be printed with the `-v` option. E.g. `stack exec singlang-exe -- test-basic.lah -v`.
+
+**Integration tests**
+
+Integration tests can be run with the `run_integration_tests.sh` script.
 
 </details>

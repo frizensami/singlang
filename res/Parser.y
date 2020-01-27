@@ -8,6 +8,8 @@ import Lexer
 %error { parseError }
 
 %token
+    progstart { TProgStart }
+    progend { TProgEnd }
     let { TLet }
     const { TConst }
     if { TIf }
@@ -42,6 +44,9 @@ import Lexer
 %%
 
 -- Left recursive: list of expressions
+-- Happy returns the first symbol defined in the grammar
+Program : progstart Exps progend { $2 }
+
 Exps : Exp { [$1] }
      | Exps Exp { $2 : $1 }
 
