@@ -1,36 +1,36 @@
--- confirm plus chop x = (6 + 7)
-chope x = (6 + 7)
-confirm plus chop x = 55
+-- confirm plus chop x is (6 + 7)
+chope x as (6 + 7)
+confirm plus chop x is 55
 simi (x + 2 + (2 + 3))
 
-chope y = "This is a string var"
+chope y as "This is a string var"
 simi y
 
-confirm plus chop z = "This is a const string"
+confirm plus chop z is "This is a const string"
 simi z
 
 simi "Hello!"
 simi (-3 + 2)
 simi ((2 * 2) * 3)
 
-chope t = 17
-t = 17 meh?
+chope t as 17
+t is 17 meh?
     ok den 
-        chope t = 1
-        chope b = 2
+        chope t as 1
+        chope b as 2
     alamak den 
-        chope t = 77
-        chope b = 101
+        chope t as 77
+        chope b as 101
 ok can liao
 
-chope i = 0
-wait long long, i != 0 meh?
-   chope i = i + 1
+chope i as 0
+wait long long, i not 0 meh?
+   chope i as i + 1
 ok can liao
 
 simi "Enter something: "
-chope input = makan 
-simi "This is your input""
+chope input as makan 
+simi "This is your input"
 simi input
 
 -- paiseh "CMI liao"

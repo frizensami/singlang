@@ -22,7 +22,8 @@ tokens :-
   makan         { \s -> TRead }
   $digit+				{ \s -> TInt (read s) }
   \".*\"        { \s -> TLit s }
-  \=            { \s -> TEq }
+  "is"            { \s -> TEqCmp }
+  "as"            { \s -> TEq }
   \+            { \s -> TPlus }
   \-            { \s -> TMinus }
   \*            { \s -> TTimes }
@@ -33,7 +34,7 @@ tokens :-
   \>            { \s -> TRArrow }
   \<=            { \s -> TLEArrow }
   \>=            { \s -> TREArrow }
-  \!=            { \s -> TNeq }
+  "not"            { \s -> TNeq }
   $alpha [$alpha $digit \_ \']*		{ \s -> TVar s }
 
 {
@@ -53,6 +54,7 @@ data Token =
   TRead     |
   TLit String |
   TEq |
+  TEqCmp |
   TPlus |
   TMinus |
   TTimes |
@@ -66,7 +68,7 @@ data Token =
   TNeq |
   TVar String  |
   TInt Int
-  deriving (Eq,Show)
+  deriving (Eq, Show)
 
 scanTokens = alexScanTokens
 

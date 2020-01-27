@@ -48,6 +48,11 @@ startInterpret verbosity handle = do
 
     -- Print parsed code if verbose
     when (verbosity == Verbose) $ do
+        putStr "\n---- Lexemes ----\n\n"
+        print tokens
+        putStr "\n---- End Parsed Statement List ----\n"
+
+
         putStr "\n---- Parsed Statement List ----\n\n"
         printExpressions expressions
         putStr "\n---- End Parsed Statement List ----\n"

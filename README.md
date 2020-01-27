@@ -22,27 +22,26 @@ But ang moh tell Uncle Seng that his England sibei cui one, sure cannot make it 
 ## Simi *Singlang*?
 
 **Singlang:**
-
 ```
-confirm plus chop x = 5
-chope y = 1
+confirm plus chop x is 5
+chope y as 1
 
-x = 5 meh?
-    ok den chope y = 6
-    alamak den chope y = 7
+x is 5 meh?
+    ok den chope y as 6
+    alamak den chope y as 7
 ok can liao
 
-chope i = 0
-wait long long, i = 5 meh?
-    chope i = i + 1
+chope i as 0
+wait long long, i is 5 meh?
+    chope i as i + 1
 ok can liao
 
 simi i
 
 simi "Say something leh: "
-chope your_input = makan
+chope u_say as "Simulated user input"
 simi "ok u say: "
-simi your_input
+simi u_say
 
 -- Dis one uncle's comment
 ```
@@ -83,15 +82,16 @@ OK la uncle show you.
 
 | Ang Moh | Singlang |
 | ------- | -------- |
-| if / boolean test | meh?     |
-| then    | ok den   |
-| else    | alamak den |
-| end block | ok can liao | 
-| var     | chope    |
-| const   | confirm plus chop |
-| while | wait long long |
-| print | simi |
-| read line | makan |
+| if / boolean test | `meh?`     |
+| then    | `ok den`   |
+| else    | `alamak den` |
+| end block | `ok can liao` | 
+| var     | `chope`    |
+| const   | `confirm plus chop` |
+| `=` (assignment) | `as` (e.g. `chope x as 5`) / `is` (e.g. `confirm plus chop x is 5`) |
+| while | `wait long long` |
+| print | `simi` |
+| read line | `makan` |
 | -- | Comment out rest of the line |
 
 ### Den the Operators liddat
@@ -100,12 +100,12 @@ Must use `meh?` hor.
 
 | Operator | Use |
 | ------- | -------- |
-| `=` | Equality: `x = 5 meh?` |
+| `is` | Equality: `x is 5 meh?` |
 | `>` | More than: `x > 5 meh?` |
 | `<` | Less than: `x < 5 meh?` |
 | `>=` | More than or equal to: `x >= 5 meh?` |
 | `<=` | Less than or equal to: `x <= 5 meh?` |
-| `!=` | Not equal to: `x != 5 meh?` |
+| `not` | Not equal to: `x not 5 meh?` |
 
 
 ## Uncle I want to try!

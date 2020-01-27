@@ -21,6 +21,7 @@ import Lexer
     str { TLit $$ }
     var { TVar $$ }
     int { TInt $$ }
+    ':=' { TEqCmp }
     '=' { TEq }
     '+' { TPlus }
     '-' { TMinus }
@@ -45,7 +46,7 @@ Exps : Exp { [$1] }
      | Exps Exp { $2 : $1 }
 
 Exp : let var '=' Exp       { Let $2 $4 } 
-    | const var '=' Exp     { Const $2 $4 }
+    | const var ':=' Exp    { Const $2 $4 }
     | Exp '+' Exp           { Plus $1 $3 }
     | Exp '-' Exp           { Minus $1 $3 }
     | Exp '*' Exp           { Times $1 $3 }
@@ -61,7 +62,7 @@ Exp : let var '=' Exp       { Let $2 $4 }
     | str                   { Str $1 }
     | var                   { Var $1 }
 
-Cmp : Exp '=' Exp { CmpEq $1 $3 }
+Cmp : Exp ':=' Exp { CmpEq $1 $3 }
     | Exp '>' Exp { CmpGT $1 $3 }
     | Exp '<' Exp { CmpLT $1 $3 }
     | Exp '>=' Exp { CmpGTE $1 $3 }
