@@ -132,7 +132,7 @@ OK Uncle tell you how.
 4. You faster test by running `stack exec singlang-exe < test-basic.lah` - liddat the "interpreter" run the codes inside `test-basic.lah`.
 
 ## Uncle I want more Singlang!
-Uncle release vee-one liao. Uncle release vee-two soon but he cannot pay his StarHub bill. Everyday play 4D then DBS tell him only got $2.27 left. Maybe can take money from CPF...
+Ok can liao.
 
 ## How to help you Uncle?
 You go the "issues" there and tell Uncle what to put into Singlang. 
