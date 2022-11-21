@@ -28,6 +28,7 @@ tokens :-
   "as"            { \s -> TEq }
   \+            { \s -> TPlus }
   \-            { \s -> TMinus }
+  "POFMA"       { \s -> TMinus }
   \*            { \s -> TTimes }
   \/            { \s -> TDiv }
   \(            { \s -> TLParen }

@@ -1030,7 +1030,7 @@ data Cmp = CmpEq Exp Exp
 
 
 {-# LINE 7 "<command-line>" #-}
-{-# LINE 1 "/home/sriram/.stack/programs/x86_64-linux/ghc-8.6.5/lib/ghc-8.6.5/include/ghcversion.h" #-}
+{-# LINE 1 "/home/sriram/.stack/programs/x86_64-linux/ghc-tinfo6-8.6.5/lib/ghc-8.6.5/include/ghcversion.h" #-}
 
 
 
@@ -1047,7 +1047,7 @@ data Cmp = CmpEq Exp Exp
 
 
 {-# LINE 7 "<command-line>" #-}
-{-# LINE 1 "/tmp/ghc10118_0/ghc_2.h" #-}
+{-# LINE 1 "/tmp/ghc2729920_0/ghc_2.h" #-}
 
 
 

@@ -82,7 +82,9 @@ evalOne (Var str) state =
         Nothing -> 
             case Map.lookup str (progconstants state) of
                 (Just val) -> return (val, state)
-                Nothing -> error $ "var/const " ++ str ++ " not defined!"
+                Nothing -> do
+                  print state
+                  error $ "var/const " ++ str ++ " not defined!"
 
 evalOne (IfThenElse cmp exps1 exps2) state = do
     compareResult <- evalCmp cmp state
