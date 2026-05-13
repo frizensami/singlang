@@ -142,22 +142,6 @@ OK Uncle tell you how.
 
 Ok can liao.
 
-## Uncle I want browser playground!
-
-The repo now includes a static GitHub Pages playground in [`docs/`](./docs/).
-
-To run it locally:
-
-1. `npm test`
-2. Open [`docs/index.html`](./docs/index.html) directly in your browser
-
-If you prefer a local server:
-
-1. `npm run serve`
-2. Open `http://localhost:8000`
-
-The site runs fully in the browser and follows the current repo behavior, including the existing `wait long long` loop semantics.
-
 ## How to help you Uncle?
 
 You go the "issues" there and tell Uncle what to put into Singlang.
