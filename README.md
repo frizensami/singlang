@@ -1,7 +1,7 @@
 # Singlang v2: Now Uncle also can code
 
 <a href="https://sriramsami.com/singlang/">
-  <img src="./docs/playground-banner.svg" alt="Open the Singlang browser playground" width="100%">
+  <img src="./docs/playground-banner.svg?v=3" alt="Open the Singlang browser playground" width="100%">
 </a>
 
 <!-- TOC depthFrom:2 depthTo:4 -->
