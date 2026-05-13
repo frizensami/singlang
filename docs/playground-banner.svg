@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
+  <title id="title">Open the Singlang browser playground</title>
+  <desc id="desc">A banner link to try Singlang in the browser.</desc>
+  <rect width="1200" height="220" rx="10" fill="#f6f8fa"/>
+  <rect x="1" y="1" width="1198" height="218" rx="9" fill="none" stroke="#d0d7de" stroke-width="2"/>
+  <rect x="28" y="28" width="1144" height="164" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="64" y="82" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" fill="#57606a">ok uncle tell you story ah...</text>
+  <text x="64" y="132" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#24292f">Try Singlang in the browser playground</text>
+  <text x="64" y="166" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="22" fill="#57606a">Write story, press Run lah, see output.</text>
+  <rect x="918" y="72" width="204" height="72" rx="8" fill="#cf222e"/>
+  <text x="1020" y="116" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="700" fill="#ffffff">Open Playground</text>
+</svg>
