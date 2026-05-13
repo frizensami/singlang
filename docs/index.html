@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Singlang Playground</title>
+    <meta
+      name="description"
+      content="A browser-based playground for the current Singlang spec."
+    />
+    <link rel="icon" href="./favicon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="repo-kicker">frizensami/singlang</p>
+          <h1>Singlang Playground</h1>
+        </div>
+      </header>
+
+      <main class="workbench">
+        <section class="program-pane">
+          <div class="toolbar">
+            <div class="toolbar-title">
+              <span class="prompt">$</span>
+              <span>uncle write code here</span>
+            </div>
+            <div class="toolbar-actions">
+              <label class="select-wrap">
+                <span>Example</span>
+                <select id="example-select"></select>
+              </label>
+              <button id="load-example" class="button">Load</button>
+              <button id="run-program" class="button button-primary">
+                Run lah
+              </button>
+              <a class="button button-docs" href="../README.md">
+                Read the Documentation
+              </a>
+              <button id="clear-output" class="button">
+                Clear output
+              </button>
+            </div>
+          </div>
+
+          <label class="editor-wrap">
+            <span id="editor-filename">hello-world.lah</span>
+            <textarea id="source-code" spellcheck="false"></textarea>
+          </label>
+        </section>
+
+        <aside class="side-pane">
+          <section class="terminal-pane">
+            <div class="pane-header">
+              <span>Program output</span>
+              <span id="run-status" class="status-pill">Idle</span>
+            </div>
+            <pre id="program-output"></pre>
+          </section>
+
+          <section class="input-pane">
+            <label class="field">
+              <span>makan input</span>
+              <textarea
+                id="stdin-queue"
+                spellcheck="false"
+                placeholder="teh tarik"
+              ></textarea>
+            </label>
+          </section>
+
+          <section class="reference-pane">
+            <div class="pane-header">
+              <span>Simi Singlang?</span>
+            </div>
+            <div class="reference-grid">
+              <div><span>var</span><code>chope x as 5</code></div>
+              <div><span>const</span><code>confirm plus chop x is 5</code></div>
+              <div><span>if</span><code>x is 5 meh?</code></div>
+              <div><span>then</span><code>ok den</code></div>
+              <div><span>else</span><code>alamak den</code></div>
+              <div><span>end</span><code>ok can liao</code></div>
+              <div><span>while</span><code>wait long long,</code></div>
+              <div><span>print</span><code>simi</code></div>
+              <div><span>read</span><code>makan</code></div>
+              <div><span>minus</span><code>- / POFMA</code></div>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="./singlang.js?v=3"></script>
+    <script src="./app.js?v=3"></script>
+  </body>
+</html>
